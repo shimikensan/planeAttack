@@ -1,0 +1,226 @@
+:root {
+  --neon-blue: #00f3ff;
+  --neon-pink: #ff00ea;
+  --neon-green: #39ff14;
+  --bg-color: #050510;
+  --text-primary: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Rajdhani', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#game-container {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  border: 2px solid var(--neon-blue);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+  border-radius: 8px;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #1a1a3a 0%, #050510 100%);
+}
+
+#gameCanvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(5, 5, 16, 0.85);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+.ui-layer.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* UI HUD */
+#ui-hud {
+  background: transparent;
+  backdrop-filter: none;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.hud-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.hud-bottom {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(to top, rgba(0, 243, 255, 0.2), transparent);
+}
+
+.question-container {
+  display: inline-block;
+  padding: 10px 30px;
+  border: 2px solid var(--neon-blue);
+  border-radius: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px var(--neon-blue);
+}
+
+.question-label {
+  font-size: 18px;
+  color: #aaa;
+  margin-right: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.question-text {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* Typography & Effects */
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 64px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.glow-text {
+  color: #fff;
+  text-shadow: 
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px var(--neon-blue),
+    0 0 40px var(--neon-blue),
+    0 0 80px var(--neon-blue);
+}
+
+.error-text {
+  text-shadow: 
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px var(--neon-pink),
+    0 0 40px var(--neon-pink),
+    0 0 80px var(--neon-pink);
+}
+
+.subtitle {
+  font-size: 24px;
+  margin-bottom: 50px;
+  color: #ccc;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.score-final {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green);
+}
+
+.wrong-words-container {
+  background: rgba(255, 0, 234, 0.1);
+  border: 1px solid var(--neon-pink);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  min-width: 300px;
+  text-align: center;
+}
+
+.wrong-words-container h3 {
+  color: var(--neon-pink);
+  margin-bottom: 15px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+#wrong-words-list {
+  list-style: none;
+  font-size: 18px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+#wrong-words-list li {
+  margin-bottom: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 5px;
+}
+
+/* Buttons */
+.btn-neon {
+  background: transparent;
+  color: var(--neon-blue);
+  border: 2px solid var(--neon-blue);
+  padding: 15px 40px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.2), inset 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+.btn-neon:hover {
+  background: var(--neon-blue);
+  color: #000;
+  box-shadow: 0 0 20px var(--neon-blue), inset 0 0 10px var(--neon-blue);
+}
+
+.btn-neon:active {
+  transform: scale(0.95);
+}
+
+/* Scrollbar for wrong words */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--neon-pink);
+  border-radius: 3px;
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>English Shooter</title>
+    <!-- Google Fonts for Sci-Fi aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+  </head>
+  <body>
+    <div id="game-container">
+      <canvas id="gameCanvas" width="800" height="600"></canvas>
+      
+      <!-- Main Menu -->
+      <div id="ui-menu" class="ui-layer">
+        <h1 class="glow-text">ENGLISH SHOOTER</h1>
+        <p class="subtitle">Bắn máy bay học từ vựng</p>
+        <button id="btn-start" class="btn-neon">START GAME</button>
+        <button id="btn-leaderboard" class="btn-neon">LEADERBOARD</button>
+      </div>
+
+      <!-- HUD (Heads Up Display) during gameplay -->
+      <div id="ui-hud" class="ui-layer hidden">
+        <div class="hud-top">
+          <div class="score-container">SCORE: <span id="score">0</span></div>
+          <div class="health-container">HP: <span id="health">3</span></div>
+        </div>
+        <div class="hud-bottom">
+          <div class="question-container">
+            <span class="question-label">MỤC TIÊU:</span>
+            <span id="current-question" class="question-text glow-text">Quả táo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Over Menu -->
+      <div id="ui-game-over" class="ui-layer hidden">
+        <h1 class="glow-text error-text">MISSION FAILED</h1>
+        <h2 class="score-final">Final Score: <span id="final-score">0</span></h2>
+        <div class="wrong-words-container">
+          <h3>Từ cần ôn lại:</h3>
+          <ul id="wrong-words-list"></ul>
+        </div>
+        <button id="btn-restart" class="btn-neon">RESTART</button>
+      </div>
+
+    </div>
+    
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
